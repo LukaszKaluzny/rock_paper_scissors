@@ -1,0 +1,6 @@
+.container {
+	padding: 20px;
+}
+#js-playerResult, #js-computerResult {
+	font-weight: 900;
+}

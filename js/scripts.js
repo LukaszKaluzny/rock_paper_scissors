@@ -1,15 +1,18 @@
 var newGameBtn = document.getElementById('js-newGameButton');
-
-newGameBtn.addEventListener('click', newGame);
-
 var pickRock = document.getElementById('js-playerPick_rock');
 var pickPaper = document.getElementById('js-playerPick_paper');
 var pickScissors = document.getElementById('js-playerPick_scissors');
-
-pickRock.addEventListener('click', function() { playerPick('rock') });
-pickPaper.addEventListener('click', function() { playerPick('paper') });
-pickScissors.addEventListener('click', function() { playerPick('scissors') });
-
+var newGameElem = document.getElementById('js-newGameElement');
+var pickElem = document.getElementById('js-playerPickElement');
+var resultsElem = document.getElementById('js-resultsTableElement');
+var playerPointsElem = document.getElementById('js-playerPoints');
+var playerNameElem = document.getElementById('js-playerName');
+var computerPointsElem = document.getElementById('js-computerPoints');
+var playerPickElem = document.getElementById('js-playerPick');
+var computerPickElem = document.getElementById('js-computerPick');
+var playerResultElem = document.getElementById('js-playerResult');
+var computerResultElem = document.getElementById('js-computerResult');
+var gameResultElem = document.getElementById('js-gameResult');
 var gameState = 'notStarted', //'started', 'ended'
   player = {
     name: '',
@@ -19,9 +22,12 @@ var gameState = 'notStarted', //'started', 'ended'
     score: 0
   };
 
-var newGameElem = document.getElementById('js-newGameElement');
-var pickElem = document.getElementById('js-playerPickElement');
-var resultsElem = document.getElementById('js-resultsTableElement');
+newGameBtn.addEventListener('click', newGame);
+pickRock.addEventListener('click', function() { playerPick('rock') });
+pickPaper.addEventListener('click', function() { playerPick('paper') });
+pickScissors.addEventListener('click', function() { playerPick('scissors') });
+
+setGameElements();
 
 function setGameElements() {
   switch(gameState) {
@@ -44,11 +50,6 @@ function setGameElements() {
         resultsElem.style.display = 'none';
   }
 }
-
-var playerPointsElem = document.getElementById('js-playerPoints');
-var playerNameElem = document.getElementById('js-playerName');
-var computerPointsElem = document.getElementById('js-computerPoints');
-
 function newGame() {
   player.name = prompt('Graczu, wpisz swoje imię', 'imię gracza');
   if (player.name) {
@@ -61,22 +62,10 @@ function newGame() {
     setGamePoints();
   }
 }
-
-// function playerPick(playerPick) {
-//     console.log(playerPick);
-// }
-
 function getComputerPick() {
     var possiblePicks = ['rock', 'paper', 'scissors'];
     return possiblePicks[Math.floor(Math.random()*3)];
 }
-
-var playerPickElem = document.getElementById('js-playerPick');
-var computerPickElem = document.getElementById('js-computerPick');
-var playerResultElem = document.getElementById('js-playerResult');
-var computerResultElem = document.getElementById('js-computerResult');
-var gameResultElem = document.getElementById('js-gameResult');
-
 function playerPick(playerPick) {
     var computerPick = getComputerPick();
     
@@ -85,7 +74,6 @@ function playerPick(playerPick) {
     checkRoundWinner(playerPick, computerPick);
     console.log(playerPick);
 }
-
 function checkRoundWinner(playerPick, computerPick) {
   playerResultElem.innerHTML = computerResultElem.innerHTML = '';
 
@@ -109,23 +97,12 @@ function checkRoundWinner(playerPick, computerPick) {
         computer.score++;
     }
   setGamePoints();
-  result ()
+  result ();
 }
-
-// function playerPick(playerPick) {
-//     var computerPick = getComputerPick();
-    
-//     playerPickElem.innerHTML = playerPick;
-//     computerPickElem.innerHTML = computerPick;
-    
-//     checkRoundWinner(playerPick, computerPick);
-// }
-
 function setGamePoints() {
     playerPointsElem.innerHTML = player.score;
     computerPointsElem.innerHTML = computer.score;
 }
-
 function result () {
   if (player.score >= 10) {
     gameResultElem.innerHTML = 'WYGRAŁEŚ!';
@@ -138,5 +115,4 @@ function result () {
   } else {
   	gameResultElem.innerHTML = '';
   }
-
 }

@@ -1,6 +1,21 @@
+body {
+  background: url("1.jpg") no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: auto;
+  margin: 0;
+}
+.container:nth-child(1) {
+    margin-top: 50px;
+}
 .container {
-	padding: 20px;
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.7);
+  width: 90%;
+}
+#js-gameResult {
+  color: #fff;
 }
 #js-playerResult, #js-computerResult, #js-gameResult {
-	font-weight: 900;
+  font-weight: 900;
 }

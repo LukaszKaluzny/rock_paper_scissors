@@ -19,7 +19,7 @@ body {
 #js-playerResult, #js-computerResult, #js-gameResult {
   font-weight: 900;
 }
-@media (max-width: 505px) {
+@media (max-width: 550px) {
   .label,
   .btn {
     display: block;

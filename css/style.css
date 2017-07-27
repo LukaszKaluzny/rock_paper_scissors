@@ -4,6 +4,7 @@ body {
   height: 100vh;
   width: auto;
   margin: 0;
+  overflow: hidden;
 }
 .container:nth-child(1) {
     margin-top: 50px;
